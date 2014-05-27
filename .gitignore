@@ -1,0 +1,11 @@
+# Ignore bundler config.
+/.bundle
+
+# Ignore all logfiles and tempfiles.
+/log/
+/tmp
+
+# Ignore Public Images
+/public/uploads/*
+!/public/uploads/samples/
+!.keep
