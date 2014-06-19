@@ -1,1 +1,152 @@
-h4 Hello!
+section.intro.text-center.vline-overlay
+  .intro-body
+    .container
+      .row
+        .col-md-8.col-md-offset-2
+          i.fa.fa-cubes.logo
+          hr.dashed
+          h1.brand-heading Мастер Балашов
+          p.intro-text
+            | Premium quality furniture and pure awesomeness.
+            br
+            | Beauty outside. Beast inside.
+          hr.dashed
+    .arrow-down-transparent
+      .left-part.topbar-switch.colored
+        i.fa.fa-mobile
+        span +7 (967) 807-01-44
+      .right-part
+        i.fa.fa-inbox
+        a href="mailto:psyhedg@gmail.com" psyhedg@gmail.com
+
+section#about.content-section.text-center
+  .container
+    .row
+      h2.section-title
+        | О компании
+        span Learn more about us
+      i.fa.fa-cubes.page-icon
+      .col-lg-10.col-lg-offset-1
+        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+    .row.whatwedo
+      .col-xs-3
+        i.fa.fa-thumbs-o-up.col-pic
+        h4 Качество
+        p.small Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et magna aliqua.
+      .col-xs-3
+        i.fa.fa-gears.col-pic
+        h4 Оборудование
+        p.small Festool — ведущий мировой производитель электроинструмента для обработки древесины.
+      .col-xs-3
+        i.fa.fa-cube.col-pic
+        h4 Материалы
+        p.small Продукция компании ТБМ. Для каждого типа изделий используется своя линейка лаков и красок.
+      .col-xs-3
+        i.fa.fa-male.col-pic
+        h4 Индивидуальность
+        p.small Наши изделия не купить в магазине. Каждый предмет изготавливается по уникальному проекту.
+
+
+section.paralax.vline-overlay-dark style="background-image: url(#{asset_url('paralax-1.jpg')});"
+
+section#projects.content-section.text-center
+  .container
+    .row
+      h2.section-title
+        | Проекты
+        span Our selected works
+      i.fa.fa-picture-o.page-icon
+      ul.projects-filter-list
+        li.filter.active data-filter=".recent"
+          i.fa.fa-th-large
+          | Recent
+        li.filter data-filter="all"
+          i.fa.fa-th-large
+          | All
+        - @categories.each do |category|
+          li.filter data-filter=".cat#{category.id}"
+            = category.name
+    .projects-block
+      ul.projects-grid.row
+       - @projects.each do |project|
+        li.col-lg-3 class="mix cat#{project.category_id} #{project.featured ? 'recent' : ''}"
+          .inner
+            .inner-image style="background-image: url('#{project.project_images.first.image.url(:thumb)}')"
+              .caption-bg
+                .project-controls
+                  i.fa.fa-search-plus
+                  a.article-link href="#"
+                    i.fa.fa-file-text
+            h3 = project.name
+            p.small.light = project.category.name
+            ul.hidden
+              - project.project_images.each do |project_image|
+                li = project_image.image.url(:medium)
+
+.projects-modal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-body
+        #carousel.carousel.slide data-ride="carousel" data-interval="false"
+          ol.carousel-indicators
+          .carousel-inner
+        a.left.carousel-control href="#carousel" data-slide="prev"
+          span.fa.fa-chevron-left
+        a.right.carousel-control href="#carousel" data-slide="next"
+          span.fa.fa-chevron-right
+
+section.paralax.vline-overlay-dark style="background-image: url(#{asset_url('paralax-2.jpg')});"
+
+section#blog.content-section.text-center
+  .container
+    .row
+      h2.section-title
+        | Статьи
+        span Daily adventures
+      i.fa.fa-pencil-square-o.page-icon
+    ul.articles-grid.row
+      li.col-lg-6
+        .inner
+          .inner-image style="background-image: url(#{asset_url('uploads/samples/1.jpg')})"
+          p.small.light
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            a href="#" ...
+        a.article-title href="#" Почему не стоит курить в столярке.
+
+      li.col-lg-6
+        .inner
+          .inner-image style="background-image: url(#{asset_url('uploads/samples/1.jpg')})"
+          p.small.light
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            a href="#" ...
+        a.article-title href="#" Выбираем дерево.
+
+      li.col-lg-6
+        .inner
+          .inner-image style="background-image: url(#{asset_url('uploads/samples/1.jpg')})"
+          p.small.light
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            a href="#" ...
+        a.article-title href="#" Как подобрать краску.
+
+      li.col-lg-6
+        .inner
+          .inner-image style="background-image: url(#{asset_url('uploads/samples/1.jpg')})"
+          p.small.light
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            a href="#" ...
+        a.article-title href="#" Ковер, который задавал стиль всей комнате.
+    a.articles-load-more href="#" Load more
+section#contacts.vline-overlay-dark.text-center
+  .container
+    .row
+      .col-lg-6.col-lg-offset-3
+        h2 Свяжитесь с нами
+        span.mobile
+          i.fa.fa-mobile
+          b +7 (967) 807-01-44
+        span.inbox
+          i.fa.fa-inbox
+          a href="mailto:psyhedg@gmail.com" psyhedg@gmail.com
+        hr
+        hr
