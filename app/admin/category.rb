@@ -1,5 +1,4 @@
 ActiveAdmin.register Category do
-  actions :index, :show, :edit, :update, :destroy
 
   index do
     column :name do |category|

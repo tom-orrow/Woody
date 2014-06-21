@@ -1,8 +1,6 @@
 ActiveAdmin.register Article do
   filter :created_at
 
-  actions :index, :show, :edit, :update, :destroy
-
   index do
     column :name do |article|
       b link_to article.name, edit_admin_article_path(article)
@@ -16,7 +14,7 @@ ActiveAdmin.register Article do
     f.actions
     f.inputs 'Content' do
       f.input :name
-      f.input :body, input_html: { class: "tinymce_editor" }
+      f.input :body
       f.input :image, as: :file, hint: f.template.image_tag(f.object.image.url(:thumb))
     end
     f.actions

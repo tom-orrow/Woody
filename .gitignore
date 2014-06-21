@@ -9,3 +9,6 @@
 /public/uploads/*
 !/public/uploads/samples/
 !.keep
+
+# Ignore dotenv.
+/.env

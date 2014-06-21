@@ -29,9 +29,9 @@ gem 'jquery-easing-rails'
 gem 'jbuilder', '~> 1.2'
 gem 'compass-rails'
 gem 'carrierwave'
-gem 'mini_magick'
 gem 'font-awesome-sass'
-gem 'rich', github: 'bastiaanterhorst/rich'
+gem 'cloudinary'
+gem 'ckeditor', github: 'galetahub/ckeditor'
 
 # DB
 gem 'pg'

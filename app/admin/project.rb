@@ -2,8 +2,6 @@ ActiveAdmin.register Project do
   filter :category
   filter :created_at
 
-  actions :index, :show, :edit, :update, :destroy
-
   index do
     column :name do |project|
       b link_to project.name, edit_admin_project_path(project)
