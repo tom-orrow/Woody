@@ -3,4 +3,6 @@ Woody::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   root 'main#index'
+  get 'articles/:id' => 'main#show', as: 'article'
+  post 'articles/more' => 'main#load_more_articles', as: 'load_more_articles'
 end

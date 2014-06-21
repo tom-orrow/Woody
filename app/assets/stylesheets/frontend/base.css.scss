@@ -1,19 +1,15 @@
+// $Variables
 $main_bg_color: #f4f4f4;
-
 $color_1: #292929;
 $color_2: #686868;
 $color_3: rgb(207, 97, 79);
 $color_4: #AFAFAF;
 $color_5: #e2e1df;
 
-@font-face {
-  font: {
-     family: 'Lobster';
-     weight: 'normal';
-     style: 'normal';
-  }
-  src: asset-url('Lobster.ttf', font);
-}
+
+// $Fonts
+@import url(http://fonts.googleapis.com/css?family=Lobster&subset=cyrillic-ext,cyrillic);
+
 
 html {
   width: 100%;

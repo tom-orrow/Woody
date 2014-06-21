@@ -31,6 +31,7 @@ gem 'compass-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'font-awesome-sass'
+gem 'rich', github: 'bastiaanterhorst/rich'
 
 # DB
 gem 'pg'

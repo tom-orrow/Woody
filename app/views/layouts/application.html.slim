@@ -6,6 +6,6 @@ html
     script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"
     = javascript_include_tag 'application'
     = csrf_meta_tags
-  body#page-top data-spy="scroll" data-target=".navbar-custom"
+  body#page-top data-spy="scroll" data-target=".navbar-custom" class="#{action_name}"
     = render "shared/navbar"
     = yield

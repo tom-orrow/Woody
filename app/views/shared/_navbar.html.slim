@@ -1,21 +1,21 @@
-nav.navbar.navbar-custom.navbar-fixed-top role="navigation"
+nav.navbar.navbar-custom.navbar-fixed-top role="navigation" class="#{action_name == 'show' ? 'top-nav-collapse' : ''}"
   .navbar-header.page-scroll
     button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-main-collapse"
       i.fa.fa-bars
-    a.navbar-brand href="#page-top"
+    a.navbar-brand href="/" data-target="#page-top"
       i.fa.fa-cubes
 
   .collapse.navbar-collapse.navbar-right.navbar-main-collapse
     ul.nav.navbar-nav
       // Hidden li included to remove active class from about link when scrolled up past about section
       li.page-scroll.hidden
-        a href="#page-top"
+        a href="/" data-target="#page-top"
           i.fa.fa-chevron-up
       li.page-scroll
-        a href="#about" О компании
+        a href="/#about" data-target="#about" О компании
       li.page-scroll
-        a href="#projects" Проекты
+        a href="/#projects" data-target="#projects" Проекты
       li.page-scroll
-        a href="#blog" Статьи
+        a href="/#blog" data-target="#blog" Статьи
       li.page-scroll
-        a href="#contacts" Контакты
+        a href="/#contacts" data-target="#contacts" Контакты

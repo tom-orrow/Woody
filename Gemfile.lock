@@ -1,4 +1,16 @@
 GIT
+  remote: git://github.com/bastiaanterhorst/rich.git
+  revision: 7ede9025ae3a84149ed7595f9b0218e48eba08ea
+  specs:
+    rich (1.4.8)
+      jquery-rails
+      kaminari
+      mime-types
+      rack-raw-upload
+      rails (>= 3.2.0)
+      sass-rails
+
+GIT
   remote: git://github.com/gregbell/active_admin.git
   revision: 0af41dfdcab1f3974814d27d0b6f32929a0c682d
   specs:
@@ -161,6 +173,8 @@ GEM
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
+    rack-raw-upload (1.1.1)
+      multi_json
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.3)
@@ -268,6 +282,7 @@ DEPENDENCIES
   rails (= 4.0.3)
   rails-dev-tweaks
   rails_12factor
+  rich!
   sass-rails (~> 4.0.0)
   slim
   taps
