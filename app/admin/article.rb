@@ -14,7 +14,7 @@ ActiveAdmin.register Article do
     f.actions
     f.inputs 'Content' do
       f.input :name
-      f.input :body
+      f.input :body, as: :ckeditor
       f.input :image, as: :file, hint: f.template.image_tag(f.object.image.url(:thumb))
     end
     f.actions

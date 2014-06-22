@@ -2,6 +2,7 @@
 
 class ImageUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
+  include CarrierWave::MiniMagick
 
   version :thumb do
     process eager: true
