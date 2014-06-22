@@ -3,4 +3,5 @@
 // = require bootstrap
 // = require jquery.easing
 // = require jquery.mixitup.min
-// = require_tree .
+// = require main
+

@@ -1,6 +1,6 @@
 li.col-lg-3 class="mix cat#{project.category_id} #{project.featured ? 'recent' : ''}"
   .inner
-    .inner-image style="background-image: url('#{project.project_images.first.image.url(:thumb)}')"
+    .inner-image style="background-image: url('#{project.project_images.first ? project.project_images.first.image.url(:thumb) : '/assets/missing.png'}')"
       .caption-bg
         .project-controls
           i.fa.fa-search-plus

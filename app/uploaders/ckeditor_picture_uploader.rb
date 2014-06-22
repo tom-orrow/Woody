@@ -12,7 +12,7 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
     alias_method_chain method, :cloudinary
   end
 
-  process :read_dimensions
+  process convert: 'png'
 
   # Create different versions of your uploaded files:
   version :thumb do

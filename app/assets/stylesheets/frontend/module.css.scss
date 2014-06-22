@@ -521,6 +521,7 @@ a.articles-resize {
   border-bottom: 1px solid $color_5;
   @include transition(all .7s ease);
   overflow-y: hidden;
+  list-style: none;
 
   li {
     position: relative;

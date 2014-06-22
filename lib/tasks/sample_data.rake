@@ -15,7 +15,7 @@ namespace :db do
     ])
 
     # Create articles
-    10.times do |n|
+    6.times do |n|
       Article.create!([
         id: n,
         name: 'Test article title',
@@ -37,12 +37,11 @@ namespace :db do
           exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
           Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur,
           vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',
-        image: File.open(Rails.root + 'public/uploads/samples/' + (rand(1..7).to_s + '.jpg'))
       ])
     end
 
     # Create projects
-    20.times do |n|
+    10.times do |n|
       Project.create!([
         id: n,
         name: 'Project Name',
@@ -50,11 +49,6 @@ namespace :db do
         article_id: n <= 5 ? n : nil,
         featured: n > 3 && n < 9 ? true : false
       ])
-      rand(1..7).times do |j|
-        ProjectImage.create!([
-          image: File.open(Rails.root + 'public/uploads/samples/' + (rand(1..7).to_s + '.jpg')),
-          project_id: n])
-      end
     end
   end
 end
