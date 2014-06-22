@@ -19,9 +19,8 @@ ActiveAdmin.register Project do
     f.actions
     f.inputs 'Content' do
       f.input :name
-      f.input :short_desc
-      f.input :desc
       f.input :featured
+      f.input :article
       f.input :category, include_blank: false
       f.has_many :project_images do |ff|
         ff.input :image, as: :file, hint: ff.template.image_tag(ff.object.image.url(:thumb))
@@ -33,7 +32,7 @@ ActiveAdmin.register Project do
 
   controller do
     def permitted_params
-      params.permit project: [:name, :short_desc, :desc, :featured, :category_id, project_images_attributes: [:_destroy, :id, :project_id, :image]]
+      params.permit project: [:name, :featured, :article_id, :category_id, project_images_attributes: [:_destroy, :id, :project_id, :image]]
     end
 
     def scoped_collection

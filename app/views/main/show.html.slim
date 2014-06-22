@@ -1,7 +1,7 @@
 section#show.content-section.text-center
   .container
     .article-header style="background-image: url(#{@article.image.url(:medium)})"
-      p.article-title-dark = @article.name
+      p.article-title-dark = @article.title
     .article-body
       = raw @article.body
 

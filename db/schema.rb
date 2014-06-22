@@ -50,12 +50,15 @@ ActiveRecord::Schema.define(version: 20140622040151) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "articles", force: true do |t|
-    t.string   "name",       null: false
+    t.string   "title",      null: false
     t.text     "body",       null: false
     t.string   "image"
+    t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
 
   create_table "categories", force: true do |t|
     t.string "name"
@@ -84,8 +87,8 @@ ActiveRecord::Schema.define(version: 20140622040151) do
 
   create_table "projects", force: true do |t|
     t.string   "name",                        null: false
-    t.integer  "article_id"
     t.integer  "category_id"
+    t.integer  "article_id"
     t.boolean  "featured",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"

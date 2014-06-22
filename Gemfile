@@ -20,7 +20,6 @@ group :production do
 end
 
 # Assets
-gem 'slim'
 gem 'sass-rails', '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
@@ -32,7 +31,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'font-awesome-sass'
 gem 'cloudinary'
-gem 'ckeditor', github: 'galetahub/ckeditor'
 
 # DB
 gem 'pg'
@@ -42,3 +40,6 @@ gem 'unicorn'
 gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'newrelic_rpm'
+gem 'friendly_id', github: 'norman/friendly_id'
+gem 'ckeditor', github: 'galetahub/ckeditor'
+gem 'slim'

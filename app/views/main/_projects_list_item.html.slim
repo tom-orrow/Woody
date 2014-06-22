@@ -5,7 +5,7 @@ li.col-lg-3 class="mix cat#{project.category_id} #{project.featured ? 'recent' :
         .project-controls
           i.fa.fa-search-plus
           - if project.article_id
-            = link_to article_path(project.article_id), class: 'article-link' do
+            = link_to article_path(project.article), class: 'article-link' do
               i.fa.fa-file-text
     h3 = project.name
     p.small.light = project.category.name

@@ -2,8 +2,8 @@ ActiveAdmin.register Article do
   filter :created_at
 
   index do
-    column :name do |article|
-      b link_to article.name, edit_admin_article_path(article)
+    column :title do |article|
+      b link_to article.title, edit_admin_article_path(article)
     end
     column :created_at
     column :updated_at
@@ -13,7 +13,8 @@ ActiveAdmin.register Article do
   form do |f|
     f.actions
     f.inputs 'Content' do
-      f.input :name
+      f.input :title
+      f.input :slug
       f.input :body, as: :ckeditor
       f.input :image, as: :file, hint: f.template.image_tag(f.object.image.url(:thumb))
     end
@@ -22,7 +23,7 @@ ActiveAdmin.register Article do
 
   controller do
     def permitted_params
-      params.permit article: [:name, :body, :image]
+      params.permit article: [:title, :body, :image, :slug]
     end
   end
 end

@@ -3,4 +3,4 @@ li.col-lg-6
     = link_to article_path(article) do
       .inner-image style="background-image: url(#{article.image.url(:thumb)})"
     p.small.light = truncate_article_title(article)
-  = link_to article.name, article_path(article), class: 'article-title'
+  = link_to article.title, article_path(article), class: 'article-title'
