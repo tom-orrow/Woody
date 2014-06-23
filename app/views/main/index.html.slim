@@ -24,7 +24,7 @@ section#about.content-section.text-center
     .row
       h2.section-title
         | О компании
-        span Learn more about us
+        span Немного информации о нас
       i.fa.fa-cubes.page-icon
       .col-lg-10.col-lg-offset-1
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
@@ -32,7 +32,7 @@ section#about.content-section.text-center
       .col-xs-3
         i.fa.fa-thumbs-o-up.col-pic
         h4 Качество
-        p.small Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et magna aliqua.
+        p.small Первосортное сырье и его бережная обработка гарантируют высокие стандарты качества нашей продукции.
       .col-xs-3
         i.fa.fa-gears.col-pic
         h4 Оборудование
@@ -44,7 +44,7 @@ section#about.content-section.text-center
       .col-xs-3
         i.fa.fa-male.col-pic
         h4 Индивидуальность
-        p.small Наши изделия не купить в магазине. Каждый предмет изготавливается по уникальному проекту.
+        p.small Наши изделия не купить в магазине. Каждый предмет изготавливается вручную по уникальному проекту.
 
 
 section.paralax.vline-overlay-dark style="background-image: url(#{asset_url('paralax-1.jpg')});"
@@ -54,15 +54,15 @@ section#projects.content-section.text-center
     .row
       h2.section-title
         | Проекты
-        span Our selected works
+        span Выполненные работы
       i.fa.fa-picture-o.page-icon
       ul.projects-filter-list
         li.filter.active data-filter=".recent"
           i.fa.fa-th-large
-          | Recent
+          | Недавние
         li.filter data-filter="all"
           i.fa.fa-th-large
-          | All
+          | Все
         - @categories.each do |category|
           li.filter data-filter=".cat#{category.id}"
             = category.name
@@ -91,12 +91,13 @@ section#blog.content-section.text-center
     .row
       h2.section-title
         | Статьи
-        span Daily adventures
+        span Полезная информация
       i.fa.fa-pencil-square-o.page-icon
     ul.articles-grid.row
       - @articles.each do |article|
         = render 'articles_list_item', article: article
-    a.articles-load-more href="#{load_more_articles_path}" Load more
+    a.articles-load-more href="#{load_more_articles_path}"
+      i.fa.fa-ellipsis-h
     a.articles-resize.minimize href="#" data-target="#blog"
       i.fa.fa-chevron-up
 

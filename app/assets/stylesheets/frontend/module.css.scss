@@ -12,7 +12,7 @@
   top: -30px;
   right: 30px;
   color: $color_5;
-  @include opacity(0.8);
+  @include opacity(.8);
 }
 
 .section-title {
@@ -64,7 +64,6 @@
 }
 
 hr.dashed {
-  border: none;
   border-top: 1px dashed;
 }
 
@@ -91,7 +90,7 @@ hr.dashed {
 }
 
 .navbar-nav {
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(0,0,0,.2);
   @include transition(background .3s ease-in-out);
 }
 
@@ -324,7 +323,7 @@ hr.dashed {
 
     .inner-image {
       position: relative;
-      background-position: center;
+      background-position: center center;
       @include background-size(cover);
       z-index: 2;
       width: 100%;
@@ -370,7 +369,7 @@ hr.dashed {
   i {
     font-size: 40px;
     color: #fff;
-    @include opacity(0.7);
+    @include opacity(.7);
   }
 
   .article-link {
@@ -430,7 +429,6 @@ hr.dashed {
   }
 }
 
-
 .projects-modal .modal-dialog {
   width: 800px;
   margin: 100px auto;
@@ -440,7 +438,7 @@ hr.dashed {
     background-image: none;
 
     &:hover {
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: rgba(0, 0, 0, .6);
     }
   }
 
@@ -454,7 +452,7 @@ hr.dashed {
 
     .carousel-inner .item {
       background-repeat: no-repeat;
-      background-position: center;
+      background-position: center center;
       @include background-size(cover);
       width: 100%;
       height: 500px;
@@ -499,17 +497,17 @@ a.articles-resize {
   font-size: .65em;
   font-weight: 700;
   text-transform: uppercase;
-  padding: 6px 20px 6px 15px;
+  padding: 6px 20px 6px;
 
   &:hover { color: $color_3; }
 
   &.minimize {
-    bottom: 49px;
+    bottom: 59px;
     border-bottom: 1px solid $color_4;
   }
 
   &.maximize {
-    bottom: 25px;
+    bottom: 35px;
     border-top: 1px solid $color_4;
   }
 }
@@ -595,7 +593,7 @@ a.articles-resize {
 
 .inner-image {
   position: relative;
-  background-position: center;
+  background-position: center center;
   @include background-size(cover);
   z-index: 2;
   width: 100%;
@@ -619,8 +617,8 @@ a.articles-resize {
 .articles-load-more {
   background-color: #fff;
   font-weight: 700;
-  font-size: 1em;
-  padding: 10px 20px;
+  font-size: 1.5em;
+  padding: 2px 15px 0px 16px;
   text-transform: uppercase;
   border-bottom: 1px solid #e2e1df;
   position: relative;
@@ -647,22 +645,29 @@ a.articles-resize {
   }
 }
 
+
+// $Show
+$article_controls_width: 190px;
+$article_controls_height: 100px;
+
 #show {
-  padding: 51px 0;
+  padding: 50px 0;
 
   .article-header {
     @include background-size(cover);
+    background-position: center center;
     width: 100%;
     height: 500px;
     position: relative;
     border: 1px solid #e2e1df;
-    border-top: 2px solid $color_3;
+    border-bottom: 2px solid $color_3;
+    overflow: hidden;
   }
 
   .article-title-dark {
     font-size: 1.85em;
     font-weight: 700;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, .8);
     width: 100%;
     padding: 40px;
     position: absolute;
@@ -679,6 +684,70 @@ a.articles-resize {
     background-color: #fff;
     border: 1px solid #e2e1df;
     text-align: left;
+  }
+
+  .article-controls {
+    position: absolute;
+    top: calc(50% - 121px);
+    background-color: $color_1;
+
+    span {
+      @include transition(top .2s ease, opacity 0 ease .2s, left 0 ease .2s, right 0 ease .2s);
+      @include transparent;
+      background-color: $color_1;
+      position: absolute;
+      width: $article_controls_width;
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 6px;
+      top: 0;
+      color: #fff;
+    }
+
+    &.left-arrow {
+      left: 0;
+      padding: 43px 16px 37px 12px;
+
+      span { left: -$article_controls_width; }
+    }
+
+    &.right-arrow {
+      right: 0;
+      padding: 43px 12px 37px 16px;
+
+      span { right: -$article_controls_width; }
+    }
+
+    i { font-size: 1.25em; }
+
+    .prev-article-img { left: -$article_controls_width; }
+
+    .next-article-img { right: -$article_controls_width; }
+
+    .prev-article-img, .next-article-img {
+      @include background-size(cover);
+      @include transition(left .3s ease .3s, right .3s ease .3s);
+      background-position: center center;
+      position: absolute;
+      width: $article_controls_width;
+      height: $article_controls_height;
+      top: 0;
+    }
+  }
+
+  .article-controls:hover {
+    span {
+      @include opaque;
+      @include transition(top .2s ease .3s, opacity 0 ease .3s);
+      top: $article_controls_height;
+    }
+
+    &.left-arrow span, .prev-article-img { left: 0; }
+
+    &.right-arrow span, .next-article-img { right: 0; }
+
+    .prev-article-img, .next-article-img { @include transition-delay(0s); }
   }
 }
 

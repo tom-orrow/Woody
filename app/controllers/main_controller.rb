@@ -6,7 +6,10 @@ class MainController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])
+    @article = Article.friendly.find(params[:id])
+    @article_prev = @article.prev
+    @article_next = @article.next
+
   end
 
   def load_more_articles
