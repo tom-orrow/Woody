@@ -1,6 +1,6 @@
 li.col-lg-3 class="mix cat#{project.category_id} #{project.featured ? 'recent' : ''}"
   .inner
-    .inner-image style="background-image: url('#{project.project_images.first ? project.project_images.first.image.url(:thumb) : '/assets/missing.png'}')"
+    .inner-image style="background-image: url('#{project.project_images.first ? project.project_images.first.image.url(:thumb) : asset_url('missing.png')}')"
       .caption-bg
         .project-controls
           i.fa.fa-search-plus
@@ -11,4 +11,4 @@ li.col-lg-3 class="mix cat#{project.category_id} #{project.featured ? 'recent' :
     p.small.light = project.category.name
     ul.hidden
       - project.project_images.each do |project_image|
-        li = project_image.image.url(:medium)
+        li = project_image.image.url

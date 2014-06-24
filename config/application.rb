@@ -6,7 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
-module Woody
+module Masterbalashov
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -21,5 +21,7 @@ module Woody
     # config.i18n.default_locale = :de
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+    config.assets.precompile += Ckeditor.assets
+    config.assets.precompile += %w(ckeditor/*)
   end
 end

@@ -4,6 +4,15 @@ class Article < ActiveRecord::Base
 
   friendly_id :title, use: :slugged
 
+  # Validations
+  validates :title, length: { minimum: 15 }
+  validates :body, length: { minimum: 15 }
+  validates :slug, length: { minimum: 5 }
+
+  def normalize_friendly_id(input)
+    input.to_s.to_slug.normalize(transliterations: :russian).to_s
+  end
+
   def next
     article = Article.where("id > ?", id).order("id ASC").first
     if !article

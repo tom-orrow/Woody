@@ -2,7 +2,7 @@ development:
   adapter: postgresql
   username: postgres
   password: pwd
-  database: woody_dev
+  database: masterbalashov_dev
   host: localhost
   pool: 5
 
@@ -10,13 +10,13 @@ test:
   adapter: postgresql
   username: postgres
   password: pwd
-  database: woody_test
+  database: masterbalashov_test
   host: localhost
   pool: 5
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: woody
+  database: masterbalashov
   pool: 5
   timeout: 5000

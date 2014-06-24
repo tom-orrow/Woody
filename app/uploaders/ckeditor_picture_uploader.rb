@@ -13,6 +13,7 @@ class CkeditorPictureUploader < CarrierWave::Uploader::Base
   end
 
   process convert: 'png'
+  process resize_to_limit: [800, 800]
 
   # Create different versions of your uploaded files:
   version :thumb do

@@ -1,6 +1,6 @@
 section#show.content-section.text-center
   .container
-    .article-header style="background-image: url(#{@article.image.url(:medium)})"
+    .article-header style="background-image: url(#{@article.image.url})"
       p.article-title-lg
         span = @article.title
       = link_to @article_prev, class: 'article-controls left-arrow'

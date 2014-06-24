@@ -17,6 +17,7 @@ end
 group :production do
   gem 'fog'
   gem 'rails_12factor'
+  gem "non-stupid-digest-assets"
 end
 
 # Assets
@@ -40,6 +41,7 @@ gem 'unicorn'
 gem 'devise'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'newrelic_rpm'
+gem 'babosa'
 gem 'friendly_id', github: 'norman/friendly_id'
 gem 'ckeditor', github: 'galetahub/ckeditor'
 gem 'slim'

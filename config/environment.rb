@@ -2,7 +2,7 @@
 require File.expand_path('../application', __FILE__)
 
 # Initialize the Rails application.
-Woody::Application.initialize!
+Masterbalashov::Application.initialize!
 
 # Initialize Time format
 Time::DATE_FORMATS[:datetime] = '%Y.%m.%d at %k:%M:%S'

@@ -56,12 +56,12 @@
   top: 0;
   left: 0;
   bottom: 30px;
-  background: url("overlay_pattern.png") repeat rgba(0, 0, 0, .01);
+  background: asset_url("overlay_pattern.png") repeat rgba(0, 0, 0, .01);
 }
 
 .vline-overlay-dark:before {
   @extend .vline-overlay:before;
-  background: url("overlay_pattern.png") repeat rgba(0, 0, 0, .3);
+  background: asset_url("overlay_pattern.png") repeat rgba(0, 0, 0, .3);
 }
 
 // $Navbar
@@ -135,7 +135,7 @@
 
 // $Intro
 .intro {
-  background: url(intro-bg.jpg) no-repeat bottom center scroll;
+  background: asset_url('intro-bg.jpg') no-repeat bottom center scroll;
   @include background-size(cover);
   display: table;
   width: 100%;
@@ -278,7 +278,7 @@
   background-position: 50% 0;
   background-repeat: no-repeat;
   @include background-size(cover);
-  height: 30vh;
+  height: 30%;
   border-top: 2px solid $color_4;
   border-bottom: 2px solid $color_4;
 }
@@ -639,7 +639,7 @@ a.articles-resize {
     left: 50%;
     margin-left: -8px;
     margin-top: -5px;
-    background: url(ajax-loader_horizontal.gif);
+    background: asset_url('ajax-loader_horizontal.gif');
   }
 }
 
@@ -862,7 +862,7 @@ $article_controls_height: 100px;
 // $Contacts
 .section-contacts {
   border-top: 8px solid #fff;
-  background-image: url('contact-bg.jpg');
+  background-image: asset_url('contact-bg.jpg');
   background-position: left 100px;
   background-attachment: fixed;
   color: #fff;

@@ -25,5 +25,9 @@ ActiveAdmin.register Article do
     def permitted_params
       params.permit article: [:title, :body, :image, :slug]
     end
+
+    def find_resource
+      scoped_collection.where(slug: params[:id]).first!
+    end
   end
 end
