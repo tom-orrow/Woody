@@ -1,7 +1,8 @@
 section#show.content-section.text-center
   .container
     .article-header style="background-image: url(#{@article.image.url(:medium)})"
-      p.article-title-dark = @article.title
+      p.article-title-lg
+        span = @article.title
       = link_to @article_prev, class: 'article-controls left-arrow'
         i.fa.fa-chevron-left
         span = @article_prev.title
@@ -11,8 +12,19 @@ section#show.content-section.text-center
         span = @article_next.title
         .next-article-img style="background-image: url(#{@article_next.image.url(:thumb)})"
 
-    .article-body
+    .col-lg-9.article-body.cke_editable.cke_editable_themed.cke_contents_ltr.cke_show_borders.cke_show_blocks
       = raw @article.body
+      = link_to '/#blog', class: "link-back" do
+        i.fa.fa-chevron-left
+        | Назад
+    .col-lg-3.article-offers
+      p.offers-title Полезные статьи
+      ul#related_articles
+       - @related_articles.each do |related_article|
+          li
+            = link_to article_path(related_article) do
+              .offer-image style="background-image: url(#{related_article.image.url(:thumb)})"
+              = related_article.title
 
 section.section-contacts.vline-overlay-dark.text-center
   .container

@@ -9,7 +9,7 @@ class MainController < ApplicationController
     @article = Article.friendly.find(params[:id])
     @article_prev = @article.prev
     @article_next = @article.next
-
+    @related_articles = @article.related
   end
 
   def load_more_articles

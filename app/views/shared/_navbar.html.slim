@@ -1,13 +1,10 @@
 nav.navbar.navbar-custom.navbar-fixed-top role="navigation" class="#{action_name == 'show' ? 'top-nav-collapse' : ''}"
   .navbar-header.page-scroll
-    button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-main-collapse"
-      i.fa.fa-bars
     a.navbar-brand href="/" data-target="#page-top"
-      i.fa.fa-cubes
+      i.fa.fa-home
 
   .collapse.navbar-collapse.navbar-right.navbar-main-collapse
     ul.nav.navbar-nav
-      // Hidden li included to remove active class from about link when scrolled up past about section
       li.page-scroll.hidden
         a href="/" data-target="#page-top"
           i.fa.fa-chevron-up

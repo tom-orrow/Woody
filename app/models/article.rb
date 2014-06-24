@@ -19,4 +19,8 @@ class Article < ActiveRecord::Base
     end
     article
   end
+
+  def related
+    (Article.where("id > ?", id).order("id ASC") + Article.where("id < ?", id).order("id ASC"))[0..5]
+  end
 end
