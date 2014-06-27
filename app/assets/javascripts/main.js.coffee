@@ -55,6 +55,13 @@ projects_detail_modal = () ->
     if $(e.target).is(':not(a)') && $(e.target).parent().is(':not(a)')
       show_project_modal($(this))
 
+  # Fix for Bootstrap Modal Shifting Page Contents
+  $winWidth = $(window).width()
+  $(document).on 'show.bs.modal', () ->
+    $('body.modal-open,.navbar-fixed-top').css('marginRight', $(window).width() - $winWidth)
+  $(document).on 'hidden.bs.modal', () ->
+    $('body,.navbar-fixed-top').css('marginRight', 0)
+
 show_project_modal = (item) ->
   $('.projects-block').find('.prev-page, .next-page').addClass('transparent')
   $('.projects-modal ol.carousel-indicators').html('')
