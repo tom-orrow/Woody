@@ -4,6 +4,9 @@ section.intro.text-center.vline-overlay
       .row
         .col-md-8.col-md-offset-2
           h1.brand-heading Мастер Балашов
+    .scroll-down
+      a.btn.page-scroll href="#about" data-target="#about"
+        i.fa.fa-angle-double-down.fa-fw
     .arrow-down-transparent
       .left-part.topbar-switch.colored
         i.fa.fa-mobile
@@ -12,30 +15,31 @@ section.intro.text-center.vline-overlay
         i.fa.fa-inbox
         a href="mailto:psyhedg@gmail.com" psyhedg@gmail.com
 
+
 section#about.content-section.text-center
   .container
     .row
       h2.section-title
         | О компании
-        span Немного информации о нас
+        p Немного информации о нас
       i.fa.fa-cubes.page-icon
       .col-lg-10.col-lg-offset-1
         p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
     .row.whatwedo
-      .col-xs-3
-        i.fa.fa-thumbs-o-up.col-pic
+      .col-xs-12.col-sm-3
+        i.fa.fa-thumbs-o-up.fa-fw.col-pic
         h4 Качество
         p.small Первосортное сырье и его бережная обработка гарантируют высокие стандарты качества нашей продукции.
-      .col-xs-3
-        i.fa.fa-gears.col-pic
+      .col-xs-12.col-sm-3
+        i.fa.fa-gears.fa-fw.col-pic
         h4 Оборудование
         p.small Festool — ведущий мировой производитель электроинструмента для обработки древесины.
-      .col-xs-3
-        i.fa.fa-cube.col-pic
+      .col-xs-12.col-sm-3
+        i.fa.fa-cube.fa-fw.col-pic
         h4 Материалы
         p.small Продукция компании ТБМ. Для каждого типа изделий используется своя линейка лаков и красок.
-      .col-xs-3
-        i.fa.fa-male.col-pic
+      .col-xs-12.col-sm-3
+        i.fa.fa-male.fa-fw.col-pic
         h4 Индивидуальность
         p.small Наши изделия не купить в магазине. Каждый предмет изготавливается вручную по уникальному проекту.
 
@@ -47,7 +51,7 @@ section#projects.content-section.text-center
     .row
       h2.section-title
         | Проекты
-        span Выполненные работы
+        p Выполненные работы
       i.fa.fa-picture-o.page-icon
       ul.projects-filter-list
         li.filter.active data-filter=".recent"
@@ -84,7 +88,7 @@ section#blog.content-section.text-center
     .row
       h2.section-title
         | Статьи
-        span Полезная информация
+        p Полезная информация
       i.fa.fa-pencil-square-o.page-icon
     ul.articles-grid.row
       - @articles.each do |article|
@@ -97,13 +101,14 @@ section#blog.content-section.text-center
 section#contacts.section-contacts.vline-overlay-dark.text-center
   .container
     .row
-      .col-lg-6.col-lg-offset-3
+      .col-xs-6.col-xs-offset-3
         h2 Свяжитесь с нами
-        span.mobile
-          i.fa.fa-mobile
+        .col-lg-6
+          i.fa.fa-phone.fa-fw
           b +7 (967) 807-01-44
-        span.inbox
-          i.fa.fa-inbox
+        .col-lg-6
+          i.fa.fa-envelope.fa-fw
           a href="mailto:psyhedg@gmail.com" psyhedg@gmail.com
-        hr
-        hr
+        .col-xs-12
+          hr
+          hr

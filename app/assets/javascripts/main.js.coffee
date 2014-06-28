@@ -16,6 +16,9 @@ collapse_navbar_on_scroll = () ->
       $(".navbar-fixed-top").removeClass("top-nav-collapse")
       $('.intro-body .arrow-down-transparent').removeClass("hiddn")
 
+  $('.navbar-collapse li a').click () ->
+    $('.navbar-collapse.collapse').collapse('hide');
+
 prepare_page_scrolling = () ->
   $('a.page-scroll, .page-scroll a').click (event) ->
       anchor = $(this).attr('data-target')
