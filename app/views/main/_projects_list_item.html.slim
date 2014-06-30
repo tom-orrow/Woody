@@ -1,4 +1,4 @@
-li.col-lg-3 class="mix cat#{project.category_id} #{project.featured ? 'recent' : ''}"
+li.col-lg-3 class="mix cat#{project.category_id} #{project.featured ? 'recent' : ''}" id="poject#{project.id}"
   .inner
     .inner-image style="background-image: url('#{project.project_images.first ? project.project_images.first.image.url(:thumb) : asset_url('missing.png')}')"
       .caption-bg

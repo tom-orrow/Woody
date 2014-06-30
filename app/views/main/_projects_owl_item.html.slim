@@ -1,0 +1,16 @@
+.owl-item-wrapper style="background-image: url('#{project.project_images.first ? project.project_images.first.image.url(:thumb) : asset_url('missing.png')}')" data-target='#project#{project.id}'
+  .container-fluid
+    .row
+      .col-lg-12.owl-item-data
+        h3 = project.name
+        hr
+        p = project.category.name
+        a.gallery href="#"
+          span Галлерея
+          i.fa.fa-search-plus
+        - if project.article_id
+          = link_to article_path(project.article), class: 'details' do
+            span Подробнее
+            i.fa.fa-file-text
+
+

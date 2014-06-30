@@ -26,16 +26,4 @@ section#show.content-section.text-center
               .offer-image style="background-image: url(#{related_article.image.url(:thumb)})"
               = related_article.title
 
-section.section-contacts.vline-overlay-dark.text-center
-  .container
-    .row
-      .col-lg-6.col-lg-offset-3
-        h2 Свяжитесь с нами
-        span.mobile
-          i.fa.fa-mobile
-          b +7 (967) 807-01-44
-        span.inbox
-          i.fa.fa-inbox
-          a href="mailto:psyhedg@gmail.com" psyhedg@gmail.com
-        hr
-        hr
+= render 'contacts', index_page: false

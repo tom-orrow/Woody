@@ -32,6 +32,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'font-awesome-sass'
 gem 'cloudinary'
+gem 'owlcarousel-rails'
 
 # DB
 gem 'pg'

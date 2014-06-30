@@ -2,10 +2,13 @@ $(document).ready ->
   if $('body.index').length
     collapse_navbar_on_scroll()
     prepare_page_scrolling()
-    # prepare_google_map()
     projects_detail_modal()
-    projects_categories()
     articles_load_more()
+
+    if $(window).width() < 980
+      prepare_projects()
+    else
+      prepare_projects_mixitup()
 
 collapse_navbar_on_scroll = () ->
   $(window).scroll () ->
@@ -35,28 +38,15 @@ scroll_to_anchor = (anchor) ->
     scrollTop: $(anchor).offset().top
   }, 800, 'easeInOutQuart')
 
-prepare_google_map = () ->
-  myLatlng = new google.maps.LatLng(51.53658, 45.97337);
-  myOptions = {
-    zoom: 16,
-    center: myLatlng,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    disableDefaultUI: true,
-    # Styles from http://snazzymaps.com/
-    styles: [{"stylers":[{"saturation":-100},{"gamma":1}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"labels.text","stylers":[{"visibility":"off"}]},{"featureType":"poi.business","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi.place_of_worship","elementType":"labels.text","stylers":[{"visibility":"off"}]},{"featureType":"poi.place_of_worship","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"geometry","stylers":[{"visibility":"simplified"}]},{"featureType":"water","stylers":[{"visibility":"on"},{"saturation":50},{"gamma":0},{"hue":"#50a5d1"}]},{"featureType":"administrative.neighborhood","elementType":"labels.text.fill","stylers":[{"color":"#333333"}]},{"featureType":"road.local","elementType":"labels.text","stylers":[{"weight":0.5},{"color":"#333333"}]},{"featureType":"transit.station","elementType":"labels.icon","stylers":[{"gamma":1},{"saturation":50}]}]
-  }
-  map = new google.maps.Map(document.getElementById('map'), myOptions)
-  marker = new google.maps.Marker({
-    position: myLatlng,
-    map: map,
-    title:"Here!"
-  })
-
 projects_detail_modal = () ->
   $('#projects ul.projects-grid li').click (e) ->
-    console.log(e.target)
     if $(e.target).is(':not(a)') && $(e.target).parent().is(':not(a)')
       show_project_modal($(this))
+
+  $('#projects .owl-item-data a.gallery').click (e) ->
+      target = $(this).attr('data-target')
+      show_project_modal($(target))
+      e.preventDefault();
 
   # Fix for Bootstrap Modal Shifting Page Contents
   $winWidth = $(window).width()
@@ -75,34 +65,6 @@ show_project_modal = (item) ->
   $('.projects-modal ol.carousel-indicators li:first-child').addClass('active')
   $('.projects-modal .carousel-inner .item:first-child').addClass('active')
   $('.projects-modal').modal('show')
-
-projects_categories = () ->
-  # MixItUp
-  $('.projects-grid').mixItUp({
-    load: {
-      filter: '.recent'
-    },
-    animation: {
-      duration: 400,
-      effects: 'fade stagger(34ms) translateY(-40px) translateZ(-1000px)',
-      easing: 'cubic-bezier(0.645, 0.045, 0.355, 1)'
-    },
-    callbacks: {
-      onMixStart: () ->
-        target = $('.projects-filter-list li.active').attr('data-filter')
-        if target == 'all' || $(target).size() > 8
-          $('.projects-link-top').show()
-          $('.projects-grid').addClass('long')
-        else
-          $('.projects-link-top').hide()
-          $('.projects-grid').removeClass('long')
-    }
-  })
-
-  $('.projects-block .prev-page').click () ->
-    $('.projects-grid').mixItUp('prevPage')
-  $('.projects-block .next-page').click () ->
-    $('.projects-grid').mixItUp('nextPage')
 
 articles_load_more = () ->
   current_page = 1
@@ -141,3 +103,41 @@ articles_load_more = () ->
     $(this).toggleClass('minimize maximize')
     $(this).find('i.fa').toggleClass('fa-chevron-up fa-chevron-down')
 
+
+# Desktop Only
+prepare_projects_mixitup = () ->
+  $('.projects-grid').mixItUp({
+    load: {
+      filter: '.recent'
+    },
+    animation: {
+      duration: 400,
+      effects: 'fade stagger(34ms) translateY(-40px) translateZ(-1000px)',
+      easing: 'cubic-bezier(0.645, 0.045, 0.355, 1)'
+    },
+    callbacks: {
+      onMixStart: () ->
+        target = $('.projects-filter-list li.active').attr('data-filter')
+        if target == 'all' || $(target).size() > 8
+          $('.projects-link-top').show()
+          $('.projects-grid').addClass('long')
+        else
+          $('.projects-link-top').hide()
+          $('.projects-grid').removeClass('long')
+    }
+  })
+
+
+# Mobile Only
+prepare_projects = () ->
+  $(".owl-carousel").owlCarousel({
+    singleItem: true,
+    navigation: true,
+    pagination: false,
+    mouseDrag: false,
+    navigationText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+  })
+
+  offset = $('.owl-carousel').offset().top - $('#projects').offset().top
+  height = $(window).height() - offset
+  $('.owl-item-wrapper').height(height + 'px')

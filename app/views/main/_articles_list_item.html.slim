@@ -1,6 +1,8 @@
-li.col-xs-6
+li.col-xs-12.col-md-6
   .article-inner
     = link_to article_path(article) do
       .inner-image style="background-image: url(#{article.image.url(:thumb)})"
-    p.small.light = truncate_article_title(article)
+    p.small.light
+      = truncate_article_title(article)
+    p.read-more = link_to 'Читать дальше', article_path(article)
   = link_to article.title, article_path(article), class: 'article-title'
