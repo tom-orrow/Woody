@@ -1,6 +1,6 @@
 ActiveAdmin.register Project do
+  config.sort_order = 'position_asc'
   filter :category
-  filter :created_at
 
   index do
     column :name do |project|
@@ -39,5 +39,13 @@ ActiveAdmin.register Project do
     def scoped_collection
       Project.includes(:category)
     end
+  end
+
+  # JS Sort
+  collection_action :sort, method: :post do
+    params[:project].each_with_index do |id, index|
+      Project.update_all(['position=?', index+1], ['id=?', id])
+    end
+    render nothing: true
   end
 end

@@ -1,15 +1,3 @@
-$(document).ready ->
-  if $('body.index').length
-    collapse_navbar_on_scroll()
-    prepare_page_scrolling()
-    projects_detail_modal()
-    articles_load_more()
-
-    if $(window).width() < 980
-      prepare_projects()
-    else
-      prepare_projects_mixitup()
-
 collapse_navbar_on_scroll = () ->
   $(window).scroll () ->
     if $(".navbar").offset().top > 50
@@ -18,9 +6,9 @@ collapse_navbar_on_scroll = () ->
     else
       $(".navbar-fixed-top").removeClass("top-nav-collapse")
       $('.intro-body .arrow-down-transparent').removeClass("hiddn")
-
   $('.navbar-collapse li a').click () ->
     $('.navbar-collapse.collapse').collapse('hide');
+
 
 prepare_page_scrolling = () ->
   $('a.page-scroll, .page-scroll a').click (event) ->
@@ -33,10 +21,12 @@ prepare_page_scrolling = () ->
     else
       $('.navbar-main-collapse .page-scroll:first-child').removeClass('hidden')
 
+
 scroll_to_anchor = (anchor) ->
-  $('html, body').stop().animate({
+  $('html, body').stop().animate
     scrollTop: $(anchor).offset().top
-  }, 800, 'easeInOutQuart')
+  , 800, 'easeInOutQuart'
+
 
 projects_detail_modal = () ->
   $('#projects ul.projects-grid li').click (e) ->
@@ -44,9 +34,9 @@ projects_detail_modal = () ->
       show_project_modal($(this))
 
   $('#projects .owl-item-data a.gallery').click (e) ->
-      target = $(this).attr('data-target')
-      show_project_modal($(target))
-      e.preventDefault();
+    target = $(this).attr('data-target')
+    show_project_modal($(target))
+    e.preventDefault()
 
   $('.projects-modal').click (e) ->
     if $(e.target).is('.item, .modal-dialog')
@@ -59,6 +49,7 @@ projects_detail_modal = () ->
   $(document).on 'hidden.bs.modal', () ->
     $('body,.navbar-fixed-top').css('marginRight', 0)
 
+
 show_project_modal = (item) ->
   if $('#modal-carousel').hasClass('owl-theme')
     $('#modal-carousel').data('owlCarousel').destroy()
@@ -67,15 +58,15 @@ show_project_modal = (item) ->
     $('#modal-carousel').append('<div class="item">' + $(this).html() + '</div>')
   $('.projects-modal .modal-desc').text(item.find('.project-desc').text())
   $('.projects-modal .modal-title').text(item.find('.project-name').text())
-  $("#modal-carousel").owlCarousel({
+  $("#modal-carousel").owlCarousel
     singleItem : true,
     navigation: true,
     pagination: true,
     mouseDrag: false,
     lazyLoad : true,
     navigationText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
-  })
   $('.projects-modal').modal('show')
+
 
 articles_load_more = () ->
   current_page = 1
@@ -117,16 +108,16 @@ articles_load_more = () ->
 
 # Desktop Only
 prepare_projects_mixitup = () ->
-  $('.projects-grid').mixItUp({
-    load: {
+  $('.projects-grid').mixItUp
+    load:
       filter: '.recent'
-    },
-    animation: {
+    ,
+    animation:
       duration: 400,
       effects: 'fade stagger(34ms) translateY(-40px) translateZ(-1000px)',
       easing: 'cubic-bezier(0.645, 0.045, 0.355, 1)'
-    },
-    callbacks: {
+    ,
+    callbacks:
       onMixStart: () ->
         target = $('.projects-filter-list li.active').attr('data-filter')
         if target == 'all' || $(target).size() > 8
@@ -135,20 +126,30 @@ prepare_projects_mixitup = () ->
         else
           $('.projects-link-top').hide()
           $('.projects-grid').removeClass('long')
-    }
-  })
 
 
 # Mobile Only
 prepare_projects = () ->
-  $("#projects-mobile-carousel").owlCarousel({
+  $("#projects-mobile-carousel").owlCarousel
     singleItem: true,
     navigation: true,
     pagination: false,
     mouseDrag: false,
     navigationText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
-  })
 
   offset = $('.owl-carousel').offset().top - $('#projects').offset().top
   height = $(window).height() - offset
   $('.owl-item-wrapper').height(height + 'px')
+
+
+jQuery ($) ->
+  if $('body.index').length
+    collapse_navbar_on_scroll()
+    prepare_page_scrolling()
+    projects_detail_modal()
+    articles_load_more()
+
+    if $(window).width() < 980
+      prepare_projects()
+    else
+      prepare_projects_mixitup()

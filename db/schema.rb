@@ -58,7 +58,8 @@ ActiveRecord::Schema.define(version: 20140622040151) do
   add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
 
   create_table "categories", force: true do |t|
-    t.string "name"
+    t.string  "name"
+    t.integer "position", default: 0, null: false
   end
 
   create_table "ckeditor_assets", force: true do |t|
@@ -85,6 +86,7 @@ ActiveRecord::Schema.define(version: 20140622040151) do
   create_table "projects", force: true do |t|
     t.string   "name",                        null: false
     t.text     "desc",                        null: false
+    t.integer  "position",    default: 0,     null: false
     t.integer  "category_id"
     t.integer  "article_id"
     t.boolean  "featured",    default: false

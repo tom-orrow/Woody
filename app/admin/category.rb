@@ -1,4 +1,5 @@
 ActiveAdmin.register Category do
+  config.sort_order = 'position_asc'
 
   index do
     column :name do |category|
@@ -20,5 +21,13 @@ ActiveAdmin.register Category do
     def permitted_params
       params.permit category: [:name]
     end
+  end
+
+  # JS Sort
+  collection_action :sort, method: :post do
+    params[:category].each_with_index do |id, index|
+      Category.update_all(['position=?', index+1], ['id=?', id])
+    end
+    render nothing: true
   end
 end
