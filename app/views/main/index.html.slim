@@ -69,20 +69,20 @@ section#projects.content-section.text-center
           = render 'projects_list_item', project: project
       a.page-scroll.projects-link-top href="#projects" data-target="#projects"
         i.fa.fa-chevron-up
-  .owl-carousel
+  #projects-mobile-carousel.owl-carousel
     - @projects.each do |project|
       = render 'projects_owl_item', project: project
   .projects-modal.modal.fade
     .modal-dialog
       .modal-content
-        .modal-body
-          #carousel.carousel.slide data-ride="carousel" data-interval="false"
-            ol.carousel-indicators
-            .carousel-inner
-          a.left.carousel-control href="#carousel" data-slide="prev"
-            span.fa.fa-chevron-left
-          a.right.carousel-control href="#carousel" data-slide="next"
-            span.fa.fa-chevron-right
+        .col-xs-8.modal-body
+          #modal-carousel.owl-carousel
+        .col-xs-4.modal-data
+          button type="button" class="close" data-dismiss="modal"
+            span ×
+          h3.modal-title
+          hr
+          p.modal-desc
 
 section.paralax.vline-overlay-dark style="background-image: url(#{asset_url('paralax-2.jpg')});"
 

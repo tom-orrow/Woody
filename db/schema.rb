@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 20140622040151) do
 
   create_table "projects", force: true do |t|
     t.string   "name",                        null: false
+    t.text     "desc",                        null: false
     t.integer  "category_id"
     t.integer  "article_id"
     t.boolean  "featured",    default: false

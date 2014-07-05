@@ -48,6 +48,10 @@ projects_detail_modal = () ->
       show_project_modal($(target))
       e.preventDefault();
 
+  $('.projects-modal').click (e) ->
+    if $(e.target).is('.item, .modal-dialog')
+      $('.projects-modal').modal('hide')
+
   # Fix for Bootstrap Modal Shifting Page Contents
   $winWidth = $(window).width()
   $(document).on 'show.bs.modal', () ->
@@ -56,14 +60,21 @@ projects_detail_modal = () ->
     $('body,.navbar-fixed-top').css('marginRight', 0)
 
 show_project_modal = (item) ->
-  $('.projects-block').find('.prev-page, .next-page').addClass('transparent')
-  $('.projects-modal ol.carousel-indicators').html('')
-  $('.projects-modal .carousel-inner').html('')
+  if $('#modal-carousel').hasClass('owl-theme')
+    $('#modal-carousel').data('owlCarousel').destroy()
+    $('#modal-carousel').html('')
   item.find('ul li').each (index) ->
-    $('.projects-modal ol.carousel-indicators').append('<li data-target="#carousel" data-slide-to="' + index + '"></li>')
-    $('.projects-modal .carousel-inner').append('<div class="item" style="background-image: url(' + $(this).text() + ')"></div>')
-  $('.projects-modal ol.carousel-indicators li:first-child').addClass('active')
-  $('.projects-modal .carousel-inner .item:first-child').addClass('active')
+    $('#modal-carousel').append('<div class="item">' + $(this).html() + '</div>')
+  $('.projects-modal .modal-desc').text(item.find('.project-desc').text())
+  $('.projects-modal .modal-title').text(item.find('.project-name').text())
+  $("#modal-carousel").owlCarousel({
+    singleItem : true,
+    navigation: true,
+    pagination: true,
+    mouseDrag: false,
+    lazyLoad : true,
+    navigationText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+  })
   $('.projects-modal').modal('show')
 
 articles_load_more = () ->
@@ -130,7 +141,7 @@ prepare_projects_mixitup = () ->
 
 # Mobile Only
 prepare_projects = () ->
-  $(".owl-carousel").owlCarousel({
+  $("#projects-mobile-carousel").owlCarousel({
     singleItem: true,
     navigation: true,
     pagination: false,

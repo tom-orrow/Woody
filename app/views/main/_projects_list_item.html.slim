@@ -7,8 +7,11 @@ li.col-lg-3 class="mix cat#{project.category_id} #{project.featured ? 'recent' :
           - if project.article_id
             = link_to article_path(project.article), class: 'article-link' do
               i.fa.fa-file-text
-    h3 = project.name
+    h3.project-name = project.name
     p.small.light = project.category.name
     ul.hidden
       - project.project_images.each do |project_image|
-        li = project_image.image.url
+        li
+          = image_tag project_image.image.url
+    p.project-desc.hidden
+      = project.desc

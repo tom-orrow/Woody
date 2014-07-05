@@ -19,6 +19,7 @@ ActiveAdmin.register Project do
     f.actions
     f.inputs 'Content' do
       f.input :name
+      f.input :desc
       f.input :featured
       f.input :article
       f.input :category, include_blank: false
@@ -32,7 +33,7 @@ ActiveAdmin.register Project do
 
   controller do
     def permitted_params
-      params.permit project: [:name, :featured, :article_id, :category_id, project_images_attributes: [:_destroy, :id, :project_id, :image]]
+      params.permit project: [:name, :desc, :featured, :article_id, :category_id, project_images_attributes: [:_destroy, :id, :project_id, :image]]
     end
 
     def scoped_collection
