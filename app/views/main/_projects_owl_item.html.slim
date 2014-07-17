@@ -4,7 +4,7 @@
       .col-lg-12.owl-item-data
         h3 = project.name
         hr
-        p = project.category.name
+        p = project.categories.map(&:name).join(', ')
         a.gallery href="#"
           span Галлерея
           i.fa.fa-search-plus

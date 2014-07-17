@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140622040151) do
+ActiveRecord::Schema.define(version: 20140717121123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,13 @@ ActiveRecord::Schema.define(version: 20140622040151) do
     t.integer "position", default: 0, null: false
   end
 
+  create_table "categories_projects", id: false, force: true do |t|
+    t.integer "category_id"
+    t.integer "project_id"
+  end
+
+  add_index "categories_projects", ["category_id", "project_id"], name: "by_category_and_project", unique: true, using: :btree
+
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
     t.string   "data_content_type"
@@ -84,12 +91,11 @@ ActiveRecord::Schema.define(version: 20140622040151) do
   end
 
   create_table "projects", force: true do |t|
-    t.string   "name",                        null: false
-    t.text     "desc",                        null: false
-    t.integer  "position",    default: 0,     null: false
-    t.integer  "category_id"
+    t.string   "name",                       null: false
+    t.text     "desc",                       null: false
+    t.integer  "position",   default: 0,     null: false
     t.integer  "article_id"
-    t.boolean  "featured",    default: false
+    t.boolean  "featured",   default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

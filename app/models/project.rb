@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
   # Associations
-  belongs_to :category
+  has_and_belongs_to_many :categories, -> { uniq.order("categories.id ASC") }
   belongs_to :article
   has_many :project_images, dependent: :destroy
   accepts_nested_attributes_for :project_images, allow_destroy: true
